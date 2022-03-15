@@ -1,7 +1,8 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.45em georgia, serif, sans-serif;
+  font-family: georgia, serif, sans-serif;
+  font-size: 1rem;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -118,7 +119,6 @@ img {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -593,5 +593,15 @@ pre tt:after {
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
+  }
+}
+
+// Globals
+.row {
+  display: flex;
+  flex-direction: row;
+
+  &.items-center {
+    align-items: center;
   }
 }
