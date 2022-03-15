@@ -4,6 +4,9 @@ const markdownPages = [
   {
     path: '/documentation/wayland/guides/introduction',
   },
+  {
+    path: '/documentation/wayland/guides/getting-started',
+  },
 ];
 
 exports.createPages = async ({ actions }) => {
