@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Markdown from 'markdown-to-jsx'
+import hljs from 'highlight.js'
 
 import GuideLayout from 'src/layouts/GuideLayout'
 import MarkdownH from 'src/components/MarkdownH'
+import MarkdownPre from 'src/components/MarkdownPre'
 
 import { NavigationItem } from 'src/components/Navigation'
 
@@ -14,7 +16,13 @@ interface GuideTemplateProps {
 }
 
 const GuideTemplate = (props: GuideTemplateProps) => {
-  console.log(props);
+  useEffect(() => {
+    const code = document.querySelectorAll('pre code');
+    code.forEach((val => {
+      hljs.highlightElement(val as HTMLElement);
+    }));
+  }, []);
+
   return (
     <GuideLayout
       className="guide-template"
@@ -40,6 +48,9 @@ const GuideTemplate = (props: GuideTemplateProps) => {
               props: {
                 tag: 'h3',
               },
+            },
+            pre: {
+              component: MarkdownPre,
             },
           },
         }}
