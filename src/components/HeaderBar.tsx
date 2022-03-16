@@ -12,7 +12,7 @@ const HeaderBar = () => {
         href="/"
       >
         <img
-          className="od-header-bar__link__logo"
+          className="od-header-bar__logo"
           src="https://raw.githubusercontent.com/orbitrc/developer.orbitrc.io/main/static/orbit-logo-dev%40512x512.png"
           width="48"
         />

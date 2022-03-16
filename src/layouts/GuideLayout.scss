@@ -1,5 +1,12 @@
 .od-guide-layout {
+  .od-guide-layout__wrapper {
+    margin-top: 64px;
+  }
+
   .od-guide-layout__main {
-    padding-top: 64px;
+    display: block;
+    max-width: 720px;
+    margin: 0 auto;
+    color: black;
   }
 }
