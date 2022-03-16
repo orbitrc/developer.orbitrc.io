@@ -1,4 +1,11 @@
 .od-guide-layout {
+
+  &.od-guide-layout--tablet, &.od-guide-layout--mobile {
+    .od-guide-layout__wrapper {
+      margin-top: calc(64px + 24px);
+    }
+  }
+
   .od-guide-layout__wrapper {
     margin-top: 64px;
   }

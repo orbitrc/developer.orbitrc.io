@@ -4,6 +4,7 @@ import './GuideLayout.scss'
 
 import HeaderBar from 'src/components/HeaderBar'
 import Navigation, { NavigationItem } from 'src/components/Navigation'
+import { useScreen } from 'src/hooks'
 
 interface GuideLayoutProps {
   children: React.ReactNode;
@@ -12,9 +13,11 @@ interface GuideLayoutProps {
 }
 
 const GuideLayout = (props: GuideLayoutProps) => {
+  const screen = useScreen();
+
   return (
     <div
-      className={`od-guide-layout ${props.className}`}
+      className={`od-guide-layout od-guide-layout--${screen.name} ${props.className}`}
     >
       <HeaderBar />
       <div

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './Navigation.scss'
+
+import { useScreen } from 'src/hooks'
 
 export interface NavigationItem {
   label: string;
@@ -14,24 +16,64 @@ interface NavigationProps {
 }
 
 const Navigation = (props: NavigationProps) => {
+  const screen = useScreen();
+
+  // For tablet, mobile.
+  const [collapsed, setCollapsed] = useState(true);
+
+  const list = (
+    <ul
+      className={`od-navigation__list ${collapsed ? 'od-navigation__list--collapsed' : ''}`}
+      style={{
+        height: screen.name === 'pc'
+          ? 'initial'
+          : (collapsed) ? 0 : screen.height - 64 - 24,
+      }}
+    >
+      {props.items.map(item => (
+        <li
+          className="od-navigation__list-item"
+        >
+          <a
+            className="od-navigation__link"
+            href={item.to}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <nav
-      className="od-navigation"
+      className={`od-navigation od-navigation--${screen.name}`}
     >
-      <h2
-        className="od-navigation__title"
-      >{props.title}</h2>
-      <ul>
-        {props.items.map(item => {
-          return (
-            <li>
-              <a href={item.to}>
-                {item.label}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      {screen.name !== 'pc'
+      ?
+        <>
+          <div
+            className="od-navigation__toggle"
+            onClick={() => {
+              setCollapsed(!collapsed);
+            }}
+          >
+            ⇩
+            <h2
+              className="od-navigation__title"
+            >{props.title}</h2>
+          </div>
+          {list}
+        </>
+      :
+        <>
+          <h2
+            className="od-navigation__title"
+          >{props.title}</h2>
+          {list}
+        </>
+      }
+
     </nav>
   );
 }
