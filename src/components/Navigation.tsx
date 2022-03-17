@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './Navigation.scss'
 
@@ -44,6 +44,18 @@ const Navigation = (props: NavigationProps) => {
       ))}
     </ul>
   );
+
+  // Initial screen.name always 'mobile'. Modify className after rendering.
+  useEffect(() => {
+    const odNavigation = document.querySelector('.od-navigation');
+    if (odNavigation) {
+      odNavigation.classList.remove('od-navigation--mobile');
+      odNavigation.classList.remove('od-navigation--tablet');
+      odNavigation.classList.remove('od-navigation--pc');
+
+      odNavigation.classList.add(`od-navigation--${screen.name}`);
+    }
+  }, []);
 
   return (
     <nav
