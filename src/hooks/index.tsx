@@ -7,7 +7,7 @@ const breakpoints = {
 };
 
 function getScreenName(): string {
-  const width = window.innerWidth;
+  const width = (typeof window !== 'undefined') ? window.innerWidth : 0;
   if (width <= breakpoints.mobile) {
     return 'mobile';
   } else if (width <= breakpoints.tablet) {
@@ -24,8 +24,11 @@ interface Screen {
 }
 
 function useScreen(): Screen {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
+  const innerWidth = (typeof window !== 'undefined') ? window.innerWidth : 0;
+  const innerHeight = (typeof window !== 'undefined') ? window.innerHeight : 0;
+
+  const [width, setWidth] = useState(innerWidth);
+  const [height, setHeight] = useState(innerHeight);
   const [name, setName] = useState(getScreenName());
 
   function windowResizeHandler() {
