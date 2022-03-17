@@ -3,7 +3,7 @@
 In this chapter, we are going to prepare to setting up the development
 environment.
 
-## Requirement
+## Requirements
 
 ### 1. Linux
 

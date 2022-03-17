@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import Markdown from 'markdown-to-jsx'
 import hljs from 'highlight.js'
+// @ts-ignore
+import hljsStyle from 'highlight.js/styles/monokai.css'
 
 import GuideLayout from 'src/layouts/GuideLayout'
 import MarkdownH from 'src/components/MarkdownH'
@@ -16,7 +18,9 @@ interface GuideTemplateProps {
 }
 
 const GuideTemplate = (props: GuideTemplateProps) => {
+  void(hljsStyle); // I don't know but this line loads stylesheet.
   useEffect(() => {
+    // Do highlight.
     const code = document.querySelectorAll('pre code');
     code.forEach((val => {
       hljs.highlightElement(val as HTMLElement);

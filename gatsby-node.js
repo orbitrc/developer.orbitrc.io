@@ -9,6 +9,14 @@ const markdownPages = [
     title: 'Getting Started',
     path: '/documentation/wayland/guides/getting-started',
   },
+  {
+    title: 'Hello, Wayland!',
+    path: '/documentation/wayland/guides/hello-wayland',
+  },
+  {
+    title: 'Everything is a Surface',
+    path: '/documentation/wayland/guides/everything-is-a-surface',
+  },
 ];
 
 exports.createPages = async ({ actions }) => {
