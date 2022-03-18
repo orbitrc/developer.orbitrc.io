@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 {
     display = wl_display_connect(NULL);
     if (display == NULL) {
-      exit(1);
+        exit(1);
     }
 
     registry = wl_display_get_registry(display);
@@ -139,7 +139,8 @@ static void global_registry_handler(void *data,
     printf("Got a registry event for <%s>, id: %d, version: %d.\n",
         interface, id, version);
     if (strcmp(interface, "wl_compositor") == 0) {
-      compositor = wl_registry_bind(registry, id, &wl_compositor_interface, 4);
+        compositor = wl_registry_bind(registry,
+            id, &wl_compositor_interface, 4);
     }
 }
 ```
