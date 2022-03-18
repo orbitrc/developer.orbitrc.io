@@ -153,6 +153,7 @@ Add check for compositor in main function.
 
     if (compositor == NULL) {
         fprintf(stderr, "Can't find compositor.\n");
+        exit(1);
     } else {
         printf("Found compositor!\n");
     }
