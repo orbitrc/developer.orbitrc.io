@@ -145,6 +145,19 @@ static void global_registry_handler(void *data,
 }
 ```
 
+Add check for compositor in main function.
+
+```c
+    wl_display_dispatch(display);
+    wl_display_roundtrip(display);
+
+    if (compositor == NULL) {
+        fprintf(stderr, "Can't find compositor.\n");
+    } else {
+        printf("Found compositor!\n");
+    }
+```
+
 `wl_compositor_interface` is pre-defined by Wayland client C library.
 The number `4` is the interface version. The latest version of `wl_compositor`
 is 5. But our Wayland compositor is not implemented this version yet. Instead,
