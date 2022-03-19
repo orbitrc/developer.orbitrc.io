@@ -17,6 +17,10 @@ const markdownPages = [
     title: 'Everything is a Surface',
     path: '/documentation/wayland/guides/everything-is-a-surface',
   },
+  {
+    title: 'In Pixels We Trust',
+    path: '/documentation/wayland/guides/in-pixels-we-trust',
+  },
 ];
 
 exports.createPages = async ({ actions }) => {

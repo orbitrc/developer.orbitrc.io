@@ -120,3 +120,111 @@ $ gcc main.c xdg-shell.c -lwayland-client
 We are going to write a lot of code, but don't panic! Most of them are
 repetitive and in same pattern. Define handlers, create a listener with them,
 create an object and add listener to it.
+
+First, we will declare the three variables.
+
+```c
+struct xdg_wm_base *xdg_wm_base = NULL;
+struct xdg_surface *xdg_surface = NULL;
+struct xdg_toplevel *xdg_toplevel = NULL;
+```
+
+`xdg_wm_base` is the base of **XDG Shell** protocol. `xdg_surface` is a surface
+based on `wl_surface`. `xdg_toplevel` is a one of the XDG surface roles. We
+will explain about these details later. For now, let's write the code.
+
+Next, define listeners with the necessary handlers.
+
+```c
+static void xdg_wm_base_ping_handler(void *data,
+        struct xdg_wm_base *wm_base, uint32_t serial)
+{
+    xdg_wm_base_pong(wm_base, serial);
+}
+
+static const struct xdg_wm_base_listener xdg_wm_base_listener = {
+    .ping = xdg_wm_base_ping_handler,
+};
+
+static void xdg_surface_configure_handler(void *data,
+        struct xdg_surface *xdg_surface, uint32_t serial)
+{
+    xdg_surface_ack_configure(xdg_surface, serial);
+}
+
+static const struct xdg_surface_listener xdg_surface_listener = {
+    .configure = xdg_surface_configure_handler,
+};
+
+static void xdg_toplevel_configure_handler(void *data,
+        struct xdg_toplevel *toplevel, int32_t width, int32_t height,
+        struct wl_array *states)
+{
+    fprintf(stderr, "XDG toplevel configure: %dx%d\n", width, height);
+}
+
+static void xdg_toplevel_close_handler(void *data,
+        struct xdg_toplevel *toplevel)
+{
+}
+
+static const struct xdg_toplevel_listener xdg_toplevel_listener = {
+    .configure = xdg_toplevel_configure_handler,
+    .close = xdg_toplevel_close_handler,
+};
+```
+
+You may have noticed that this code has a similar pattern to what was written
+before. Let's continue. In our `global_registry_handler()` function, add new
+comparison.
+
+```c
+static void global_registry_handler(void *data, struct wl_registry *registry,
+        uint32_t id, const char *interface, uint32_t version)
+{
+    if (strcmp(interface, "wl_compositor") == 0) {
+        compositor = wl_registry_bind(registry,
+            id, &wl_compositor_interface, 4);
+    } else if (strcmp(interface, "xdg_wm_base") == 0) {
+        xdg_wm_base = wl_registry_bind(registry,
+            id, &xdg_wm_base_interface, 1);
+    }
+}
+```
+
+And finally in our main function, add next after create a surface.
+
+```c
+// Add our listener to xdg_wm_base.
+xdg_wm_base_add_listener(xdg_wm_base, &xdg_wm_base_listener, NULL);
+
+// Create a XDG surface based our surface.
+xdg_surface = xdg_wm_base_get_xdg_surface(xdg_wm_base, surface);
+xdg_surface_add_listener(xdg_surface, &xdg_surface_listener, NULL);
+
+// Set toplevel role to our XDG surface.
+xdg_toplevel = xdg_surface_get_toplevel(xdg_surface);
+xdg_toplevel_add_listener(xdg_toplevel, &xdg_toplevel_listener, NULL);
+
+// Apply our changes.
+wl_surface_commit(surface);
+```
+
+There's one thing left. Main loop of our Wayland client.
+
+```c
+while (wl_display_dispatch(display) != -1) {
+    ;
+}
+```
+
+It's done! Try compile and run.
+
+If you want full source code, click [here](https://github.com/hardboiled65/WaylandClient-tutorials/tree/main/surface).
+
+## Conclusion
+
+We have done to prepare the core of Wayland client program. In next chapter,
+finally we will draw something on the screen.
+
+[In Pixels We Trust](/documentation/wayland/guides/in-pixels-we-trust)
