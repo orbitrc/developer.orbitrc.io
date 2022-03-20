@@ -186,3 +186,47 @@ static struct wl_buffer* create_buffer(int width, int height)
     return buff;
 }
 ```
+
+Done. Now we are ready to write pixel data to shared memory.
+
+## Writing to Shared Memory
+
+In our main function add the lines.
+
+```c
+    wl_surface_commit(surface);
+    wl_display_roundtrip(display);
+
+    buffer = create_buffer(480, 360);
+
+    wl_surface_attach(surface, buffer, 0, 0);
+    wl_surface_commit(surface);
+
+    uint32_t *pixel = shm_data;
+    for (int i = 0; i < 480 * 360; ++i) {
+        *pixel = 0xde000000;
+        ++pixel;
+    }
+```
+
+We used `WL_SHM_FORMAT_ARGB8888` when create buffer. Each 8-bit stands for
+alpha, red, green and blue, in that order. In this example, the colour is
+black with slightly transparent.
+
+The result will be like this.
+
+![wayland-shared](https://raw.githubusercontent.com/orbitrc/developer.orbitrc.io/main/static/wayland-shared.png)
+
+The full, working source code can found [here](https://github.com/hardboiled65/WaylandClient-tutorials/tree/main/shared).
+
+### Do It Yourself!
+
+Change the hexademical number in your flavour. For example, 0xffff0000 is
+fully opaque red colour. You can store this pixel data to a global variable
+and change each loop. Try it until you get tired of playing with the pixels.
+
+## Next
+
+If you are no longer interested in this, let's move on to the next chapter.
+
+[NEXT](/documentation/wayland/guides/NEXT)
