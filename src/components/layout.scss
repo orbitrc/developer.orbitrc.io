@@ -605,3 +605,19 @@ pre tt:after {
     align-items: center;
   }
 }
+
+// Markdown
+.od-markdown-content {
+  h2, h3 {
+    padding-top: 32px;
+  }
+
+  a {
+    color: #0969da;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

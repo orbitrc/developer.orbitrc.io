@@ -52,6 +52,7 @@ exports.createPages = async ({ actions }) => {
       context: {
         markdown: md,
         navigationItems: waylandGuidesNavigationItems,
+        title: page.title,
       },
     });
   });

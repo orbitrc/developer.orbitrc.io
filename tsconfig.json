@@ -4,6 +4,7 @@
     "target": "es6",
     "jsx": "preserve",
     "lib": ["dom", "es2015", "es2017"],
+    "noImplicitAny": false,
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,

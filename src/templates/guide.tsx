@@ -4,6 +4,8 @@ import hljs from 'highlight.js'
 // @ts-ignore
 import hljsStyle from 'highlight.js/styles/monokai.css'
 
+import Seo from 'src/components/seo'
+
 import GuideLayout from 'src/layouts/GuideLayout'
 import MarkdownH from 'src/components/MarkdownH'
 import MarkdownPre from 'src/components/MarkdownPre'
@@ -14,6 +16,7 @@ interface GuideTemplateProps {
   pageContext: {
     markdown: string;
     navigationItems: NavigationItem[];
+    title: string;
   };
 }
 
@@ -32,7 +35,11 @@ const GuideTemplate = (props: GuideTemplateProps) => {
       className="guide-template"
       navigationItems={props.pageContext.navigationItems}
     >
+      <Seo
+        title={props.pageContext.title}
+      />
       <Markdown
+        className="od-markdown-content"
         options={{
           overrides: {
             h1: {
@@ -69,6 +76,7 @@ GuideTemplate.defaultProps = {
   pageContext: {
     markdown: '',
     navigationItems: [],
+    title: '',
   },
 } as GuideTemplateProps;
 
