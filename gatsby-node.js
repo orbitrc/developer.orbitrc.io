@@ -21,6 +21,14 @@ const markdownPages = [
     title: 'In Pixels We Trust',
     path: '/documentation/wayland/guides/in-pixels-we-trust',
   },
+  {
+    title: 'Cairo For an Image',
+    path: '/documentation/wayland/guides/cairo-for-an-image',
+  },
+  {
+    title: 'Pango For Text',
+    path: '/documentation/wayland/guides/pango-for-text',
+  },
 ];
 
 exports.createPages = async ({ actions }) => {

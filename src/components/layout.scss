@@ -620,4 +620,31 @@ pre tt:after {
       text-decoration: underline;
     }
   }
+
+  blockquote {
+    position: relative;
+    color: #3d3d3d;
+
+    &::before, &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background-image: url("https://raw.githubusercontent.com/orbitrc/developer.orbitrc.io/main/static/double-quote-left.svg");
+      background-size: 32px 32px;
+      filter: invert(.7);
+    }
+
+    &::before {
+      top: -8px;
+      left: -36px;
+    }
+
+    &::after {
+      bottom: -8px;
+      right: -36px;
+      transform: rotate(180deg);
+    }
+  }
 }

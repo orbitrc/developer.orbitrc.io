@@ -229,4 +229,4 @@ and change each loop. Try it until you get tired of playing with the pixels.
 
 If you are no longer interested in this, let's move on to the next chapter.
 
-[NEXT](/documentation/wayland/guides/NEXT)
+[Cairo For an Image](/documentation/wayland/guides/cairo-for-an-image)
