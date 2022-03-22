@@ -11,10 +11,17 @@
   }
 
   .od-guide-layout__main {
+    $base-width: 720px;
+    $navigation-width: 220px;
+
     display: block;
-    max-width: 720px;
+    max-width: $base-width;
     margin: 0 auto;
     padding: 8px;
     color: black;
+
+    @media (max-width: $base-width + $navigation-width * 2) and (min-width: 811px) {
+      max-width: calc(100% - (220px * 2));
+    }
   }
 }
