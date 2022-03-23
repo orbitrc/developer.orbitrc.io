@@ -54,6 +54,55 @@ function useScreen(): Screen {
   };
 }
 
+interface ColorScheme {
+  setConfig: (value: string) => void;
+  current: string;
+}
+
+function useColorScheme(): ColorScheme {
+  const [_, setConfig] = useState('auto');
+  const [current, setCurrent] = useState('initial');
+
+  function setConfigFunction(value: string) {
+    setConfig(value);
+    switch (value) {
+      case 'auto':
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          setCurrent('dark');
+        } else {
+          setCurrent('light');
+        }
+        localStorage.setItem('color-scheme', 'auto');
+        break;
+      case 'light':
+        setCurrent('light');
+        localStorage.setItem('color-scheme', 'light');
+        break;
+      case 'dark':
+        setCurrent('dark');
+        localStorage.setItem('color-scheme', 'dark');
+        break;
+      default:
+        break;
+    }
+  }
+
+  useEffect(() => {
+    const userConfig = localStorage.getItem('color-scheme');
+    if (!userConfig) {
+      localStorage.setItem('color-scheme', 'auto');
+    } else {
+      setConfig(userConfig);
+    }
+  }, []);
+
+  return {
+    setConfig: setConfigFunction,
+    current: current,
+  }
+}
+
 export {
   useScreen,
+  useColorScheme,
 }

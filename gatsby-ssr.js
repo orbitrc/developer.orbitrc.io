@@ -5,3 +5,10 @@
  */
 
 // You can delete this file if you're not using it
+const React = require('react');
+
+exports.onRenderBody = ({ setPreBodyComponents }) => {
+  setPreBodyComponents([
+    <script src="/pre-body.js" />
+  ]);
+}

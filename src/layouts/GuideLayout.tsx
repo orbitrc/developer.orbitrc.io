@@ -4,6 +4,7 @@ import './GuideLayout.scss'
 
 import HeaderBar from 'src/components/HeaderBar'
 import Navigation, { NavigationItem } from 'src/components/Navigation'
+import Footer from 'src/components/Footer'
 import { useScreen } from 'src/hooks'
 
 interface GuideLayoutProps {
@@ -33,6 +34,7 @@ const GuideLayout = (props: GuideLayoutProps) => {
           {props.children}
         </main>
       </div>
+      <Footer />
     </div>
   );
 }
