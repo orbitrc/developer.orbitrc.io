@@ -1,0 +1,26 @@
+.od-footer {
+  background-color: #818181;
+  font-family: sans-serif;
+
+  .od-footer__color-selector {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 50px;
+
+    input[type="radio"] {
+      display: none;
+
+      &:checked + label {
+        background-color: #0969da;
+      }
+    }
+  }
+}
+
+// For dark theme.
+.body--dark {
+  .od-footer {
+    background-color: #23222b;
+    color: #fefefe;
+  }
+}
