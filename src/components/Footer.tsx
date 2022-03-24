@@ -22,11 +22,6 @@ const Footer = () => {
       className="od-footer"
     >
       <div
-        className="od-footer__copyright"
-      >
-        Copyright &copy; 2022 Orbit Research Centre. All rights reserved.
-      </div>
-      <div
         className="od-footer__color-selector"
       >
         <input
@@ -59,6 +54,11 @@ const Footer = () => {
           }}
         />
         <label htmlFor="auto-button">Auto</label>
+      </div>
+      <div
+        className="od-footer__copyright"
+      >
+        Copyright &copy; 2022 Orbit Research Centre. All rights reserved.
       </div>
     </footer>
   );

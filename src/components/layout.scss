@@ -653,3 +653,16 @@ pre tt:after {
     }
   }
 }
+
+// Markdown Dark
+.body--dark {
+  .od-markdown-content {
+    a {
+      color: #0a84ff;
+    }
+
+    blockquote {
+      color: #7c7c7c;
+    }
+  }
+}

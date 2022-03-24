@@ -61,3 +61,14 @@
     }
   }
 }
+
+// For dark theme.
+.body--dark {
+  .od-navigation {
+    .od-navigation__list-item {
+      a {
+        color: #0a84ff;
+      }
+    }
+  }
+}
