@@ -29,6 +29,7 @@ const Footer = () => {
           type="radio"
           name="color-scheme"
           value="light"
+          checked={colorScheme.config === 'light'}
           onClick={() => {
             colorScheme.setConfig('light');
           }}
@@ -39,6 +40,7 @@ const Footer = () => {
           type="radio"
           name="color-scheme"
           value="dark"
+          checked={colorScheme.config === 'dark'}
           onClick={() => {
             colorScheme.setConfig('dark');
           }}
@@ -49,6 +51,7 @@ const Footer = () => {
           type="radio"
           name="color-scheme"
           value="auto"
+          checked={colorScheme.config === 'auto'}
           onClick={() => {
             colorScheme.setConfig('auto');
           }}

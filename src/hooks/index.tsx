@@ -55,6 +55,7 @@ function useScreen(): Screen {
 }
 
 interface ColorScheme {
+  config: string;
   setConfig: (value: string) => void;
   current: string;
 }
@@ -97,6 +98,7 @@ function useColorScheme(): ColorScheme {
   }, []);
 
   return {
+    config: _,
     setConfig: setConfigFunction,
     current: current,
   }
