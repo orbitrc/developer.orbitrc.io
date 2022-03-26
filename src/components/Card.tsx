@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 import './Card.scss'
 
@@ -13,9 +14,9 @@ interface CardProps {
 
 const Card = (props: CardProps) => {
   return (
-    <a
+    <Link
       className={`od-card ${props.className}`}
-      href={props.to}
+      to={props.to}
     >
       <div
         className="od-card__cover"
@@ -41,7 +42,7 @@ const Card = (props: CardProps) => {
           {props.description}
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
