@@ -1,0 +1,72 @@
+.index {
+  .index__header {
+    padding: 32px 0;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: normal;
+
+      span {
+        animation-duration: 1s;
+        animation-name: blink;
+        animation-iteration-count: infinite;
+
+        @keyframes blink {
+          from {
+            opacity: 1;
+          }
+
+          30% {
+            opacity: 1;
+          }
+
+          80% {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 0;
+          }
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+      font-family: sans-serif;
+    }
+  }
+
+  .index__cards-wrapper {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 16px 0;
+    background-color: #dedede;
+
+    .index__cards {
+      margin: 0 auto;
+      max-width: 720px;
+
+      > * {
+        padding: 0 8px;
+
+        &.col-12 {
+          padding-top: 8px;
+
+          &:first-child {
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// For dark theme.
+.body--dark {
+  .index {
+    .index__cards-wrapper {
+      background-color: #1f1f1f;
+    }
+  }
+}

@@ -605,9 +605,18 @@ pre tt:after {
 .row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
   &.items-center {
     align-items: center;
+  }
+
+  > .col-12 {
+    width: 100%;
+  }
+
+  > .col-6 {
+    width: 50%;
   }
 }
 

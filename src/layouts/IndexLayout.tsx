@@ -3,6 +3,7 @@ import React from 'react'
 import './IndexLayout.scss'
 
 import HeaderBar from '../components/HeaderBar'
+import Footer from 'src/components/Footer'
 
 interface IndexLayoutProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ const IndexLayout = (props: IndexLayoutProps) => {
       >
         {props.children}
       </main>
+      <Footer />
     </div>
   );
 }

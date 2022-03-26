@@ -9,6 +9,6 @@ const React = require('react');
 
 exports.onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents([
-    <script src="/pre-body.js" />
+    <script src="/pre-body.js" key={0} />
   ]);
 }

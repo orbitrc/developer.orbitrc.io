@@ -1,0 +1,41 @@
+.od-card {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+  text-align: left;
+  text-decoration: none;
+  border-radius: 16px;
+  background-color: #ffffff;
+  color: #000000;
+  overflow: hidden;
+
+  .od-card__cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 256px;
+    background-color: #8b4513;
+
+    img {
+      max-width: 256px;
+      max-height: 256px;
+    }
+  }
+
+  .od-card__detail {
+    padding: 16px;
+
+    .od-card__title {
+      font-weight: bold;
+    }
+  }
+}
+
+// For dark theme.
+.body--dark {
+  .od-card {
+    background-color: #000000;
+    color: #ffffff;
+  }
+}
