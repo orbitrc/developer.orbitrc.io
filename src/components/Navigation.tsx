@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'gatsby'
 
 import './Navigation.scss'
 
@@ -34,12 +35,12 @@ const Navigation = (props: NavigationProps) => {
         <li
           className="od-navigation__list-item"
         >
-          <a
+          <Link
             className="od-navigation__link"
-            href={item.to}
+            to={item.to}
           >
             {item.label}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>
