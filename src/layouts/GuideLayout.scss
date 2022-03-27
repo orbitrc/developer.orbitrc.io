@@ -16,11 +16,12 @@
 
     display: block;
     max-width: $base-width;
+    min-height: $base-width;
     margin: 0 auto;
     padding: 8px;
     color: black;
 
-    @media (max-width: $base-width + $navigation-width * 2) and (min-width: 811px) {
+    @media (max-width: ($base-width + $navigation-width * 2)) and (min-width: 811px) {
       max-width: calc(100% - (220px * 2));
     }
   }
