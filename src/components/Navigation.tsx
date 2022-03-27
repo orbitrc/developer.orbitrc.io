@@ -34,6 +34,7 @@ const Navigation = (props: NavigationProps) => {
       {props.items.map(item => (
         <li
           className="od-navigation__list-item"
+          key={item.to}
         >
           <Link
             className="od-navigation__link"

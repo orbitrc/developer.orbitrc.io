@@ -4,7 +4,7 @@ import hljs from 'highlight.js'
 // @ts-ignore
 import hljsStyle from 'highlight.js/styles/monokai.css'
 
-import Seo from 'src/components/seo'
+import Seo from 'src/components/Seo'
 
 import GuideLayout from 'src/layouts/GuideLayout'
 import MarkdownH from 'src/components/MarkdownH'

@@ -5,7 +5,7 @@ import './Index.scss'
 
 import IndexLayout from '../layouts/IndexLayout'
 import Card from 'src/components/Card'
-import Seo from "../components/seo"
+import Seo from "../components/Seo"
 
 import { useScreen } from 'src/hooks'
 
@@ -25,7 +25,9 @@ const IndexPage = () => {
     <IndexLayout
       className="index"
     >
-      <Seo title="Home" />
+      <Seo
+        description="References, documentation for Linux developers"
+      />
       <div
         className="index__header"
         style={{

@@ -6,11 +6,20 @@
  */
 
 import * as React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, lang, meta, title }) {
+interface SeoProps {
+  description?: string;
+  lang: string;
+  meta: {
+    name: string;
+    content: string;
+  }[];
+  title?: string;
+}
+
+function Seo(props: SeoProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -25,16 +34,18 @@ function Seo({ description, lang, meta, title }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = props.description || site.siteMetadata.description
+  const defaultTitle = site.siteMetadata?.title;
+  const title = props.title ? props.title : defaultTitle;
+  const titleTemplate = props.title !== undefined ? `%s | ${defaultTitle}` : defaultTitle;
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: props.lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={titleTemplate}
       meta={[
         {
           name: `description`,
@@ -68,7 +79,7 @@ function Seo({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ].concat(props.meta)}
     />
   )
 }
@@ -77,13 +88,6 @@ Seo.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
-
-Seo.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 }
 
 export default Seo

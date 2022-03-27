@@ -30,8 +30,8 @@ const Footer = () => {
           name="color-scheme"
           value="light"
           checked={colorScheme.config === 'light'}
-          onClick={() => {
-            colorScheme.setConfig('light');
+          onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+            colorScheme.setConfig(evt.target.value);
           }}
         />
         <label htmlFor="light-button">Light</label>
@@ -41,8 +41,8 @@ const Footer = () => {
           name="color-scheme"
           value="dark"
           checked={colorScheme.config === 'dark'}
-          onClick={() => {
-            colorScheme.setConfig('dark');
+          onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+            colorScheme.setConfig(evt.target.value);
           }}
         />
         <label htmlFor="dark-button">Dark</label>
@@ -52,8 +52,8 @@ const Footer = () => {
           name="color-scheme"
           value="auto"
           checked={colorScheme.config === 'auto'}
-          onClick={() => {
-            colorScheme.setConfig('auto');
+          onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+            colorScheme.setConfig(evt.target.value);
           }}
         />
         <label htmlFor="auto-button">Auto</label>
