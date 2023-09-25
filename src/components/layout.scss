@@ -1,3 +1,6 @@
+$font-family-sans: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -87,8 +90,7 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: $font-family-sans;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
@@ -265,8 +267,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: $font-family-sans;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
@@ -282,8 +283,7 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: $font-family-sans;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -299,8 +299,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: $font-family-sans;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -316,8 +315,7 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: $font-family-sans;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -333,8 +331,7 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: $font-family-sans;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
@@ -555,10 +552,6 @@ th {
   -moz-font-feature-settings: "tnum";
   -ms-font-feature-settings: "tnum";
   -webkit-font-feature-settings: "tnum";
-  padding-left: 0.96667rem;
-  padding-right: 0.96667rem;
-  padding-top: 0.725rem;
-  padding-bottom: calc(0.725rem - 1px);
 }
 th:first-child,
 td:first-child {
@@ -622,6 +615,9 @@ pre tt:after {
 
 // Markdown
 .od-markdown-content {
+  $table-border-color: #bdbdbd;
+  $table-even-background-color: #dfdfdf;
+
   h2, h3 {
     padding-top: 32px;
   }
@@ -661,11 +657,36 @@ pre tt:after {
       transform: rotate(180deg);
     }
   }
+
+  table {
+    width: auto;
+    border: 1px solid $table-border-color;
+
+    tr:nth-child(even) {
+      background-color: $table-even-background-color;
+    }
+
+    th, td {
+      padding: 8px 16px;
+      border-right: 1px solid $table-border-color;
+      border-bottom: 1px solid $table-border-color;
+    }
+
+    th {
+      text-align: center;
+    }
+
+    td {
+      font-family: $font-family-sans;
+    }
+  }
 }
 
 // Markdown Dark
 .body--dark {
   .od-markdown-content {
+    $table-even-background-color: #535353;
+
     a {
       color: #0a84ff;
     }
@@ -676,6 +697,12 @@ pre tt:after {
 
     code {
       border: 1px solid #7c7c7c;
+    }
+
+    table {
+      tr:nth-child(even) {
+        background-color: $table-even-background-color;
+      }
     }
   }
 }

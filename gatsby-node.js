@@ -31,8 +31,31 @@ const markdownPages = [
   },
 ];
 
+//===================
+// Reference Pages
+//===================
+const primerMarkdownPages = [];
+const listdir = fs.readdirSync('./src/markdowns/documentation/primer/references/v0');
+const markdowns = listdir.filter(filename => {
+  return filename.endsWith('.md');
+});
+markdowns.forEach(md => {
+  const title = '';
+  const path = md === 'index.md'
+    ? '/documentation/primer/references/v0/'
+    : `/documentation/primer/references/v0/${md.replace('.md', '')}`
+  primerMarkdownPages.push({
+    title: title,
+    path: path,
+    index: md === 'index.md',
+  });
+});
+
+
 exports.createPages = async ({ actions }) => {
   const { createPage, createRedirect } = actions
+
+  // Boilerplates. Maybe not used.
   createPage({
     path: "/using-dsg",
     component: require.resolve("./src/templates/using-dsg.js"),
@@ -60,6 +83,24 @@ exports.createPages = async ({ actions }) => {
       context: {
         markdown: md,
         navigationItems: waylandGuidesNavigationItems,
+        title: page.title,
+      },
+    });
+  });
+
+  //=====================
+  // Primer References
+  //=====================
+  primerMarkdownPages.forEach(page => {
+    const md = page.index === true
+      ? fs.readFileSync(`./src/markdowns${page.path}/index.md`, 'utf8')
+      : fs.readFileSync(`./src/markdowns${page.path}.md`, 'utf8');
+
+    createPage({
+      path: page.path,
+      component: require.resolve('./src/templates/reference.tsx'),
+      context: {
+        markdown: md,
         title: page.title,
       },
     });

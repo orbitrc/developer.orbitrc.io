@@ -1,0 +1,31 @@
+.od-reference-layout {
+
+  &.od-reference-layout--tablet, &.od-reference-layout--mobile {
+    .od-reference-layout__wrapper {
+      margin-top: calc(64px + 24px);
+    }
+  }
+
+  .od-reference-layout__wrapper {
+    margin-top: 64px;
+  }
+
+  .od-reference-layout__main {
+    $base-width: 720px;
+    $navigation-width: 220px;
+
+    display: block;
+    max-width: $base-width;
+    min-height: $base-width;
+    margin: 0 auto;
+    padding: 8px;
+    color: black;
+  }
+}
+
+// For dark theme.
+.body--dark {
+  .od-reference-layout__main {
+    color: #fbfbfb;
+  }
+}
