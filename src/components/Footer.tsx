@@ -61,7 +61,7 @@ const Footer = () => {
       <div
         className="od-footer__copyright"
       >
-        Copyright &copy; 2022 Orbit Research Centre. All rights reserved.
+        Copyright &copy; 2024 Orbit Research Centre. All rights reserved.
       </div>
     </footer>
   );
